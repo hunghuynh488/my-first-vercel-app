@@ -1,4 +1,11 @@
+"use client";
+
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useWallet } from "@solana/wallet-adapter-react";
+
 export default function Home() {
+  const { publicKey, connected } = useWallet();
+
   return (
     <main className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
       <div className="max-w-xl w-full p-8">
@@ -10,12 +17,15 @@ export default function Home() {
           Trade tokens on Solana
         </p>
 
-        <button className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg font-semibold">
-          Connect Wallet
-        </button>
+        <WalletMultiButton />
 
         <div className="mt-8 p-4 bg-slate-800 rounded-lg">
-          <p>Wallet: Not Connected</p>
+          <p className="break-all">
+            Wallet:{" "}
+            {connected && publicKey
+              ? publicKey.toBase58()
+              : "Not Connected"}
+          </p>
         </div>
 
         <div className="grid grid-cols-3 gap-4 mt-8">
