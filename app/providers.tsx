@@ -7,7 +7,7 @@ import { PhantomWalletAdapter, SolflareWalletAdapter } from "@solana/wallet-adap
 import "@solana/wallet-adapter-react-ui/styles.css";
 
 export function Providers({ children }: { children: ReactNode }) {
-  const endpoint = "https://api.mainnet-beta.solana.com";
+  const endpoint = "https://api.devnet.solana.com";
 
   const wallets = useMemo(
     () => [new PhantomWalletAdapter(), new SolflareWalletAdapter()],
